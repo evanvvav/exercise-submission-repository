@@ -5,16 +5,20 @@ const App = () => {
    const [newName, setNewName] = useState("");
 
    const handleNewName = (event) => {
-      console.log("what hapenning in event:", event.target.value);
+      console.log("typing:", event.target.value);
       setNewName(event.target.value);
    };
 
    const addName = (event) => {
       event.preventDefault();
-      console.log("add Name:", event.target);
-      setPersons(persons.concat({ name: newName }));
-      setNewName("");
-      console.log("names after submit:", persons);
+      if (persons.some((element) => element.name === newName)) {
+         alert(`${newName} is already added to phonebook`);
+         console.log(newName, "is already added to phonebook");
+      } else {
+         console.log("new name:", event.target);
+         setPersons(persons.concat({ name: newName }));
+         setNewName("");
+      }
    };
 
    return (
