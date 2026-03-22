@@ -16,10 +16,7 @@ const addPerson = (enteredName) => {
 };
 
 const deletePerson = (id) => {
-  return axios
-    .delete(`${baseUrl}/${id}`)
-    .then((response) => response.data)
-    .catch((error) => alert("error occurred deleting data"));
+  return axios.delete(`${baseUrl}/${id}`).then((response) => response.data);
 };
 
 const replaceNumber = ({ id, enteredName }) => {
